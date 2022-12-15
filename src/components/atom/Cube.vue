@@ -3,6 +3,7 @@
 withDefaults(defineProps<{ url?: string }>(), { url: "/" });
 
 // Data
+const size = 80;
 const edges = [
   { id: 1, name: "front", img: "logo-black.svg" },
   { id: 2, name: "back", img: "logo-black.svg" },
@@ -18,7 +19,7 @@ const edges = [
     <router-link :to="url">
       <figure class="cube__figure">
         <span v-for="(edge, index) in edges" :key="`edge-${index}`" :class="['cube__edge', `cube__edge-${edge.name}`]">
-          <img alt="Demetory" :src="useImage(edge.img)" />
+          <img alt="Demetory" :src="useImage(edge.img)" :width="size" :height="size" />
         </span>
       </figure>
     </router-link>
@@ -26,7 +27,7 @@ const edges = [
 </template>
 
 <style scoped lang="scss">
-$cube-size: 100px;
+$cube-size: 80px;
 $cube-bg-color: #000;
 $cube-duration: 60s;
 
@@ -50,7 +51,7 @@ $rotate-animaton: (
 );
 
 .cube {
-  z-index: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;

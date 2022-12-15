@@ -8,12 +8,12 @@
 // Main Dimensions
 $min-width: 320px;
 $min-height: 100vh;
-$gap: 1.6rem;
+$gap: 2rem;
 
 // Borders
 $border-radius: 8px;
 $border-solid: solid 1px;
-$border-app: 20px;
+$border-app: $gap;
 
 // Z-Indexes
 $zindex-top: 90000;

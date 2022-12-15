@@ -1,22 +1,15 @@
 <script setup lang="ts">
 // Modules
 import { useI18n } from "vue-i18n";
-import { useExamplePiniaStore } from "@/store/examplePinia";
+import { useContentStore } from "@/store/contentStore";
 
 // Data
+const contentStore = useContentStore();
 const { locale, t } = useI18n();
-const examplePiniaStore = useExamplePiniaStore();
 const route = useRoute();
 const siteTitle = t("common.siteTitle");
 
 // Computed Properties
-const getColorMode = computed(() => {
-  if (typeof examplePiniaStore.colorMode === "string") {
-    let result = examplePiniaStore.colorMode.toLocaleLowerCase();
-    return `mode-${result}`;
-  }
-});
-
 const getSiteTitle = computed(() => {
   const translate = route.meta.title ? t(`${route.meta.title}`) : null;
   const result = translate ? `${siteTitle} | ${translate}` : siteTitle;
@@ -30,7 +23,7 @@ useHead({ title: getSiteTitle });
 </script>
 
 <template>
-  <Html :lang="locale" :class="getColorMode">
+  <Html :lang="locale">
     <Body>
       <NoScript>
         <section class="noscript">
@@ -45,10 +38,15 @@ useHead({ title: getSiteTitle });
       <NuxtLoadingIndicator />
 
       <div class="page">
+        <ClientOnly>
+          <AtomKreuz />
+        </ClientOnly>
+        <AtomSlogan :msg="contentStore.slogan" />
         <TemplateSiteHeader />
         <main :class="['page-container', `page-${String($route.name)}`]">
           <NuxtPage />
         </main>
+        <TemplateSiteFooter />
       </div>
     </Body>
   </Html>

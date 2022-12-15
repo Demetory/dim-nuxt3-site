@@ -5,15 +5,13 @@ definePageMeta({
 });
 
 useHead({
-  meta: [{ name: "description", content: "NuxtContent Starter Template" }],
+  meta: [{ name: "description", content: "Demetory. Creating Sites and Apps - creative simplicity." }],
 });
 </script>
 
 <template>
   <div class="page-wrapper">
-    <TemplateHomeAbout />
-    <TemplateHomeTooling />
-    <TemplateHomeModules />
-    <TemplateHomeSupport />
+    Index page
+    <AtomNoise />
   </div>
 </template>

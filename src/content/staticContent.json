@@ -1,0 +1,63 @@
+{
+  "navi": [{ "path": "/blog", "translate": "common.siteNavi.blog" }],
+
+  "navi_contact": [
+    {
+      "alt": "Demetory - Telegram",
+      "img": "tg",
+      "size": 60,
+      "url": "https://t.me/Demetory"
+    },
+    {
+      "alt": "Demetory - HeadHunter",
+      "img": "hh",
+      "size": 60,
+      "url": "https://novosibirsk.hh.ru/resume/215651d0ff090383cf0039ed1f71476f4f5858"
+    },
+    {
+      "alt": "Demetory - CV",
+      "img": "cv",
+      "size": 60,
+      "url": "/download/CV-Demetrey-2020-EN.pdf"
+    },
+    {
+      "alt": "Demetory - EMail",
+      "img": "mm",
+      "size": 60,
+      "url": "mailto:hello@demetrey.ru"
+    }
+  ],
+
+  "links": {
+    "dim_shop": { "text": "shop.demetrey.ru", "url": "https://shop.demetrey.ru/" },
+    "dim_behance": { "text": "Behance", "url": "https://www.behance.net/demetory" },
+    "dim_github": { "text": "Github", "url": "https://github.com/Demetory" }
+  },
+
+  "footer_contact_msg": {
+    "true": "Feel free to say: «Hello».",
+    "false": "Contact me later, please."
+  },
+
+  "analytics": {
+    "google": "",
+    "yandex": ""
+  },
+
+  "slogan": "За конституцию? Ну, не чокаясь.",
+
+  "heading": {
+    "home": {
+      "digit": 2,
+      "lines": ["Code", "Design", "Prototype"]
+    },
+    "notfound": {
+      "lines": ["404", "The truth", "is out there"]
+    }
+  },
+
+  "overlay": {
+    "devtools": "Close DevTools, buddy. Now.",
+    "source": "Nice code, huh?"
+  }
+}

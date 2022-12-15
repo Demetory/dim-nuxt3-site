@@ -50,5 +50,11 @@ function useDateToRoman(num: number) {
   return Array(+digits.join("") + 1).join("M") + result;
 }
 
+// Get year
+const getYear = () => {
+  const date = useDateTZ(new Date(), "Asia/Jakarta");
+  return new String(useDateToRoman(date.getFullYear()));
+};
+
 // Export
-export { useDateTZ, useDateToRoman };
+export { useDateTZ, useDateToRoman, getYear };

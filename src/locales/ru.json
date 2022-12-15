@@ -1,9 +1,8 @@
 {
   "common": {
-    "siteTitle": "NuxtContent Blog Starter Template",
+    "siteTitle": "Demetory",
     "siteNavi": {
       "home": "Главная",
-      "example": "Примеры",
       "blog": "Блог",
       "error": "404"
     },
