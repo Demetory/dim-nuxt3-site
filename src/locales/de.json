@@ -1,0 +1,34 @@
+{
+  "common": {
+    "siteTitle": "NuxtContent Blog Starter Template",
+    "siteNavi": {
+      "home": "Startseite",
+      "example": "Beispiele",
+      "blog": "Blog",
+      "error": "404"
+    },
+    "siteSwitcher": {
+      "lang": {
+        "title": "Sprache"
+      },
+      "mode": {
+        "title": "Farbschema",
+        "body": {
+          "dark": "Dunkel",
+          "light": "Licht"
+        }
+      }
+    }
+  },
+
+  "pages": {
+    "error": {
+      "title": "Etwas hat schief gelaufen",
+      "body": {
+        "code": "Fehlercode",
+        "message": "Meldung",
+        "back": "Zurück zur Startseite"
+      }
+    }
+  }
+}
