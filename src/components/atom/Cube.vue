@@ -93,6 +93,12 @@ $rotate-animaton: (
   }
 }
 
+@media screen and (max-width: 640px) {
+  .cube {
+    display: none;
+  }
+}
+
 @keyframes spincube {
   @each $percent, $rotate in $rotate-animaton {
     #{$percent} {

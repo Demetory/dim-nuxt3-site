@@ -20,13 +20,28 @@ const getType = computed(() => {
 <style scoped lang="scss">
 .tag {
   &:not(:last-of-type) {
-    margin-right: 1rem;
+    margin-right: 2rem;
   }
 
   a {
-    display: inline-block;
-    &::first-letter {
-      text-transform: uppercase;
+    display: inline-flex;
+    margin-bottom: 2rem;
+    padding: 1rem 1.6rem;
+    border: solid 1px colors.$green;
+    border-radius: 8px;
+    color: colors.$green;
+    transition: all grid.$transition;
+    background-color: transparent;
+
+    &.router-link-exact-active {
+      color: colors.$black;
+      background-color: colors.$green;
+      cursor: default;
+    }
+
+    &:hover:not(.router-link-exact-active) {
+      color: colors.$white;
+      background-color: colors.$green;
     }
   }
 }

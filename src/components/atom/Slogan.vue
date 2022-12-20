@@ -1,16 +1,32 @@
 <script setup lang="ts">
-// Props
-defineProps<{
-  msg: string;
-}>();
+// Modules
+import { useContentStore } from "@/store/contentStore";
+
+// Data
+const contentStore = useContentStore();
+const slogans = contentStore.slogan;
+const slogan = ref(slogans[0]);
+const intervalSloganID = setInterval(getSlogan, 30000);
+
+// Methods
+onBeforeUnmount(() => {
+  clearInterval(intervalSloganID);
+});
+
+function getSlogan() {
+  const random = Math.floor(Math.random() * slogans.length);
+  slogan.value = slogans[random];
+}
 </script>
 
 <template>
-  <small>{{ msg }}</small>
+  <small class="slogan">
+    {{ slogan }}
+  </small>
 </template>
 
 <style scoped lang="scss">
-small {
+.slogan {
   z-index: 200;
   position: fixed;
   display: block;
@@ -25,8 +41,9 @@ small {
   font-size: 1.2rem;
   font-weight: 400;
   letter-spacing: 0.05em;
-  color: colors.$font-grey;
   opacity: 0.75;
+  transition: all grid.$transition;
+  user-select: none;
 
   &::before {
     content: "";
@@ -35,13 +52,28 @@ small {
     margin-right: 15px;
     height: 1px;
     width: 25px;
-    background: colors.$font-grey;
   }
 }
 
 @media screen and (max-width: 800px) {
-  small {
+  .slogan {
     right: calc(-400px + grid.$gap);
+  }
+}
+
+.mode-dark .slogan {
+  color: colors.$font-grey;
+
+  &::before {
+    background: colors.$font-grey;
+  }
+}
+
+.mode-light .slogan {
+  color: colors.$font-black;
+
+  &::before {
+    background: colors.$font-black;
   }
 }
 </style>

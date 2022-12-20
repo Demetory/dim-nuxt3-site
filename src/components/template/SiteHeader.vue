@@ -6,19 +6,22 @@
       <OrganismSwitchColor />
     </ClientOnly>
     <MoleculeNaviHire />
+    <AtomHamburger />
   </header>
 </template>
 
 <style scoped lang="scss">
 .header {
   z-index: calc(grid.$zindex-top - 100);
-  position: sticky;
   top: grid.$gap;
+  position: sticky;
   display: flex;
   flex-direction: row;
   flex: 0 1 auto;
   align-items: center;
-  margin-bottom: grid.$gap;
+  padding: grid.$gap;
+  transition: all grid.$transition;
+  user-select: none;
 
   &__switchers {
     display: flex;
@@ -30,15 +33,49 @@
   }
 }
 
-.mode-dark {
+@media screen and (max-width: 1024px) {
+  .navihire {
+    display: none;
+  }
+  .mainnavi {
+    :deep(a:not(:first-of-type)) {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
   .header {
-    background-color: colors.$bg-dark;
+    top: calc(grid.$gap / 2);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .mainnavi {
+    display: none;
+  }
+  .hamburger {
+    order: 1;
+    margin-left: 0;
+  }
+  .switcher {
+    order: 2;
+  }
+}
+
+.mode-dark {
+  .page:not(.page-index) {
+    .header {
+      background-color: colors.$bg-body-dark;
+    }
   }
 }
 
 .mode-light {
-  .header {
-    background-color: colors.$bg-light;
+  .page:not(.page-index) {
+    .header {
+      background-color: colors.$bg-body-light;
+    }
   }
 }
 </style>

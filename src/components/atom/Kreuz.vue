@@ -12,7 +12,7 @@ let rotation = 0;
 // Listeners
 useEventListener(document, "wheel", (evt) => {
   evt.deltaY < 0 ? rotation-- : rotation++;
-  kreuz.value!.style.transform = "rotate(" + rotation * 10 + "deg)";
+  kreuz.value!.style.transform = "rotate(" + rotation * 20 + "deg)";
 });
 </script>
 

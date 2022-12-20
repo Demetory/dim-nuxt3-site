@@ -17,6 +17,10 @@ const getContactState = computed(() => {
 });
 
 // Methods
+onBeforeUnmount(() => {
+  clearInterval(intervalTimerID);
+});
+
 function updateTime() {
   dateTZ.value = useDateTZ(new Date(), "Asia/Jakarta");
 
@@ -30,11 +34,6 @@ function updateTime() {
 
   dateClock.value = `${hour}:${minute}`;
 }
-
-// Hooks
-onBeforeUnmount(() => {
-  clearInterval(intervalTimerID);
-});
 </script>
 
 <template>

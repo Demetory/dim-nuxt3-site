@@ -15,7 +15,7 @@ useHead({
 
 <template>
   <div class="blog">
-    <OrganismBlogTags />
+    <OrganismGetTags />
     <TemplateBlogPost :article="article" type="page" />
     <MoleculePostSurround :prev="prev" :next="next" />
   </div>

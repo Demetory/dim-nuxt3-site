@@ -56,5 +56,10 @@ const getYear = () => {
   return new String(useDateToRoman(date.getFullYear()));
 };
 
+// Get day ending
+const getNth = (n: number) => {
+  return n > 3 && n < 21 ? "th" : n % 10 == 2 ? "nd" : n % 10 == 2 ? "nd" : n % 10 == 3 ? "rd" : "th";
+};
+
 // Export
-export { useDateTZ, useDateToRoman, getYear };
+export { useDateTZ, useDateToRoman, getYear, getNth };

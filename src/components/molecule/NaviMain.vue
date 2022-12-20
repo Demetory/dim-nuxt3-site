@@ -25,7 +25,9 @@ const contentStore = useContentStore();
 
   a {
     margin-top: -6px;
-    font-size: 2.2rem;
+    margin-left: 3rem;
+    font-size: 2.6rem;
+    font-weight: 400;
   }
 }
 </style>

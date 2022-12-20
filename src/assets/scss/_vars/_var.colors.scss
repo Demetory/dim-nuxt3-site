@@ -9,6 +9,8 @@
 $white: #fff;
 $black: #000;
 $grey: #999;
+$green: #00bd6f;
+$blue: #73bbc5;
 
 // Typo Colors
 $font-main-light: #121212;
@@ -17,9 +19,10 @@ $font-black: #121212;
 $font-selection: #fff;
 $font-grey: #dbdbdb;
 $font-white: #efefef;
+$font-heading-from: #666;
 
 // Links
-$link-main: #00bd6f;
+$link-main: $green;
 $link-main-hover: #3f3f46;
 $link-main-active: #000;
 
@@ -32,7 +35,7 @@ $bg-dark: #121212;
 $bg-light: #fff;
 
 $bg-body-light: #fff;
-$bg-body-dark: #121212;
+$bg-body-dark: #0a0a0a;
 $bg-border-app: #efefef;
 $bg-selection: #73bbc5;
 $bg-border-app-light: #efefef;

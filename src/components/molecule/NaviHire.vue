@@ -9,7 +9,9 @@ const contentStore = useContentStore();
 <template>
   <nav class="navihire">
     <h2 class="navihire__title">Wanna hire me? →</h2>
-    <AtomFlipper v-for="flipper in contentStore.navi_contacts" :key="`flipper-${flipper.img}`" :params="flipper" />
+    <div class="flippers">
+      <AtomFlipper v-for="flipper in contentStore.navi_contacts" :key="`flipper-${flipper.img}`" :params="flipper" />
+    </div>
   </nav>
 </template>
 
@@ -17,17 +19,30 @@ const contentStore = useContentStore();
 .navihire {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   align-items: center;
   margin-left: auto;
-  margin-right: grid.$gap;
 
   &__title {
     font-size: 2.2rem;
     font-weight: 400;
   }
 
-  .flip-container {
-    margin-left: grid.$gap;
+  .flippers {
+    display: flex;
+    flex-direction: row;
+
+    .flip-container {
+      margin-left: grid.$gap;
+    }
+  }
+
+  @media screen and (max-width: 1280px) {
+    .flippers {
+      .flip-container {
+        margin-left: 10px;
+      }
+    }
   }
 }
 </style>

@@ -16,7 +16,6 @@ tags = [...new Set(tags)];
 <template>
   <section class="tags">
     <p>
-      <b>Select by Tag: </b>
       <AtomTag v-for="(item, index) in tags" :key="`tag-${index}`" :tag="item" />
     </p>
   </section>
@@ -25,14 +24,7 @@ tags = [...new Set(tags)];
 <style scoped lang="scss">
 .tags {
   display: flex;
-  padding: grid.$gap;
-}
-
-.mode-dark .tags {
-  background-color: colors.$black;
-}
-
-.mode-light .tags {
-  background-color: colors.$bg-border-app;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 </style>

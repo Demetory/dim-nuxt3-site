@@ -1,4 +1,11 @@
 <script setup lang="ts">
+// Modules
+import { useContentStore } from "@/store/contentStore";
+
+// Data
+const contentStore = useContentStore();
+const heading = contentStore.heading.home;
+
 // Methods
 definePageMeta({
   title: "common.siteNavi.home",
@@ -11,7 +18,9 @@ useHead({
 
 <template>
   <div class="page-wrapper">
-    Index page
     <AtomNoise />
+    <OrganismGetLastPost />
+    <AtomHeading :heading="heading" />
+    <AtomHole />
   </div>
 </template>

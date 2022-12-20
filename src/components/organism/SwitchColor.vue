@@ -74,5 +74,16 @@ function switchMode() {
       display: flex;
     }
   }
+
+  @media screen and (max-width: 1280px) {
+    h2 {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    h2 {
+      display: flex;
+    }
+  }
 }
 </style>

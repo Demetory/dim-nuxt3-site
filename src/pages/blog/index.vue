@@ -10,8 +10,5 @@ useHead({
 </script>
 
 <template>
-  <div class="page-wrapper">
-    <OrganismBlogTags />
-    <TemplateBlogList />
-  </div>
+  <TemplateBlogList />
 </template>

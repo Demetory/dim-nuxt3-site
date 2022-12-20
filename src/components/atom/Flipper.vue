@@ -31,8 +31,7 @@ const getSize = computed(() => {
 
 <style scoped lang="scss">
 .flip-container {
-  display: inline-flex;
-  flex: 0 1 auto;
+  display: flex;
   perspective: 60px;
   width: v-bind(getSize);
   height: v-bind(getSize);
@@ -70,6 +69,16 @@ const getSize = computed(() => {
     .back {
       z-index: 1;
       transform: rotateY(180deg);
+    }
+  }
+
+  @media screen and (max-width: 1280px) {
+    width: calc(v-bind(getSize) / 1.25);
+    height: calc(v-bind(getSize) / 1.25);
+
+    img {
+      width: calc(v-bind(getSize) / 1.25);
+      height: calc(v-bind(getSize) / 1.25);
     }
   }
 }

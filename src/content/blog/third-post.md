@@ -1,9 +1,15 @@
 ---
-title: "Third Post"
-description: "This is the third article"
-img: "images/cover-(3).png"
+number: "03"
+title: "This is our third awesome post"
+subtitle: "And here we have third vorword, excerpt and so on."
+description: "Third awesome post in our awesome blog"
 tags: [Nuxt, Test, Third]
+date: "2022-12-20"
 ---
+
+This is the Excerpt of the third post. Will see how it works, folks.
+
+<!-- more -->
 
 ## Third blog post
 

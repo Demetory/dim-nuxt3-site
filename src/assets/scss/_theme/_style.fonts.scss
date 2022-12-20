@@ -15,5 +15,6 @@
   }
 }
 
-@include font("Ubuntu", normal, 400, "ubuntu-regular.woff2");
-@include font("Ubuntu", normal, 700, "ubuntu-bold.woff2");
+@include font("Inter", normal, 400, "inter-400.woff2");
+@include font("Inter", normal, 700, "inter-700.woff2");
+@include font("Inter", normal, 900, "inter-900.woff2");

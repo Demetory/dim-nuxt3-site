@@ -1,9 +1,15 @@
 ---
-title: "Second Post"
-description: "This is the second article"
-img: "images/cover-(2).png"
+number: "02"
+title: "This is our second awesome post"
+subtitle: "And here we have second vorword, excerpt and so on."
+description: "Second awesome post in our awesome blog"
 tags: [Nuxt, Test, Second]
+date: "2022-12-19"
 ---
+
+This is the Excerpt of the second post. Will see how it works, folks.
+
+<!-- more -->
 
 ## Second blog post
 

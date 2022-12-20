@@ -1,10 +1,8 @@
 <script setup lang="ts">
 // Modules
 import { useI18n } from "vue-i18n";
-import { useContentStore } from "@/store/contentStore";
 
 // Data
-const contentStore = useContentStore();
 const { locale, t } = useI18n();
 const route = useRoute();
 const siteTitle = t("common.siteTitle");
@@ -37,13 +35,14 @@ useHead({ title: getSiteTitle });
 
       <NuxtLoadingIndicator />
 
-      <div class="page">
+      <div :class="['page', `page-${String($route.name)}`]" v-on:mousemove="calculateDelta">
         <ClientOnly>
           <AtomKreuz />
+          <AtomSlogan />
         </ClientOnly>
-        <AtomSlogan :msg="contentStore.slogan" />
+
         <TemplateSiteHeader />
-        <main :class="['page-container', `page-${String($route.name)}`]">
+        <main class="page-container">
           <NuxtPage />
         </main>
         <TemplateSiteFooter />

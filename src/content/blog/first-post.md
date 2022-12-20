@@ -1,9 +1,15 @@
 ---
-title: "First Post"
-description: "This is the first article"
-img: "images/cover-(1).png"
+number: "01"
+title: "This is our first awesome post"
+subtitle: "And here we have first vorword, excerpt and so on."
+description: "First awesome post in our awesome blog"
 tags: [Nuxt, Test, First]
+date: "2022-12-18"
 ---
+
+This is the Excerpt of the first post. Will see how it works, folks.
+
+<!-- more -->
 
 ## First blog post
 

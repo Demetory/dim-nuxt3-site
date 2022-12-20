@@ -7,8 +7,9 @@
 
 // Core
 body {
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Inter", sans-serif;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 // App Border
@@ -98,12 +99,13 @@ html.mode-light,
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: grid.$gap;
 
   &-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     flex: 1;
+    padding: 0 grid.$gap grid.$gap;
   }
 }
 
@@ -111,7 +113,6 @@ html.mode-light,
 .mainnavi {
   a {
     position: relative;
-    margin-left: grid.$gap;
 
     &::after {
       content: "";
@@ -120,15 +121,32 @@ html.mode-light,
       bottom: -4px;
       width: 100%;
       height: 2px;
-      background-color: colors.$white;
       transition: width grid.$transition;
     }
 
-    &:hover {
+    &.router-link-exact-active {
       &::after {
         width: 0;
       }
     }
+
+    &:hover:not(.router-link-exact-active) {
+      &::after {
+        width: 0;
+      }
+    }
+  }
+}
+
+.mode-dark .mainnavi a {
+  &::after {
+    background-color: colors.$white;
+  }
+}
+
+.mode-light .mainnavi a {
+  &::after {
+    background-color: colors.$black;
   }
 }
 

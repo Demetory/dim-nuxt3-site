@@ -13,9 +13,10 @@ const useContentStore = defineStore("contentStore", () => {
   const links = staticData.links;
   const footer_contact_msg = staticData.footer_contact_msg;
   const slogan = staticData.slogan;
+  const heading = staticData.heading;
   const isDark = ref(true);
 
-  return { navi, navi_contacts, links, footer_contact_msg, slogan, isDark };
+  return { navi, navi_contacts, links, footer_contact_msg, slogan, heading, isDark };
 });
 
 // Export
