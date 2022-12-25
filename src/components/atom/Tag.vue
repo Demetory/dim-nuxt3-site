@@ -13,7 +13,8 @@ const getType = computed(() => {
 
 <template>
   <span :class="['tag', getType]">
-    <NuxtLink :to="`/blog/tags/${tag}`"> {{ tag }} </NuxtLink>
+    <NuxtLink v-if="type && type === 'all'" to="/blog">All</NuxtLink>
+    <NuxtLink v-else :to="`/blog/tags/${tag}`"> {{ tag }} </NuxtLink>
   </span>
 </template>
 

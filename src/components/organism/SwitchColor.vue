@@ -25,7 +25,7 @@ function initData() {
 function setMode() {
   const isTrue = localStorage.getItem("isDark") === "true";
   contentStore.isDark = isTrue;
-  const colorMode = contentStore.isDark ? "mode-dark" : "mode-light";
+  const colorMode = contentStore.isDark ? "theme-dark" : "theme-light";
   html.value!.className = "";
   html.value!.classList.add(colorMode);
 }

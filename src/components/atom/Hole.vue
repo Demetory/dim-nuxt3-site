@@ -78,13 +78,13 @@ $hole-duration: 3s;
   }
 }
 
-.mode-dark .hole {
+.theme-dark .hole {
   i {
     animation-name: scale-dark;
   }
 }
 
-.mode-light .hole {
+.theme-light .hole {
   i {
     animation-name: scale-light;
   }

@@ -1,12 +1,18 @@
 <script setup lang="ts">
 // Modules
-import { useContentStore } from "@/store/contentStore";
+import type { ISlogan } from "@/types/ISlogan";
+
+// Props
+const props = defineProps({
+  params: {
+    type: Object as () => ISlogan,
+    required: true,
+  },
+});
 
 // Data
-const contentStore = useContentStore();
-const slogans = contentStore.slogan;
-const slogan = ref(slogans[0]);
-const intervalSloganID = setInterval(getSlogan, 30000);
+const slogan = ref(props.params.slogans[0]);
+const intervalSloganID = setInterval(getSlogan, props.params.delay);
 
 // Methods
 onBeforeUnmount(() => {
@@ -14,8 +20,8 @@ onBeforeUnmount(() => {
 });
 
 function getSlogan() {
-  const random = Math.floor(Math.random() * slogans.length);
-  slogan.value = slogans[random];
+  const random = Math.floor(Math.random() * props.params.slogans.length);
+  slogan.value = props.params.slogans[random];
 }
 </script>
 
@@ -26,54 +32,51 @@ function getSlogan() {
 </template>
 
 <style scoped lang="scss">
+$width: 400px;
+$height: 12px;
+
 .slogan {
-  z-index: 200;
   position: fixed;
   display: block;
-  bottom: calc(50% - 200px);
-  right: calc(-400px + grid.$gap * 2);
-  width: 400px;
-  height: 12px;
+  bottom: calc(50% - $width / 2);
+  right: calc(($width * -1) + grid.$gap * 2);
+  width: $width;
+  height: $height;
   text-align: center;
   transform-origin: bottom left;
   transform: rotate(-90deg);
   text-align: center;
-  font-size: 1.2rem;
-  font-weight: 400;
+  font-size: $height;
   letter-spacing: 0.05em;
-  opacity: 0.75;
-  transition: all grid.$transition;
   user-select: none;
 
   &::before {
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-right: 15px;
+    margin-right: 6px;
     height: 1px;
-    width: 25px;
+    width: 15px;
+  }
+
+  @media screen and (max-width: 800px) {
+    right: calc(($width * -1) + grid.$gap);
   }
 }
 
-@media screen and (max-width: 800px) {
-  .slogan {
-    right: calc(-400px + grid.$gap);
-  }
-}
-
-.mode-dark .slogan {
-  color: colors.$font-grey;
+.theme-dark .slogan {
+  color: colors.$grey-light;
 
   &::before {
-    background: colors.$font-grey;
+    background: colors.$grey-light;
   }
 }
 
-.mode-light .slogan {
-  color: colors.$font-black;
+.theme-light .slogan {
+  color: colors.$grey-dark;
 
   &::before {
-    background: colors.$font-black;
+    background: colors.$grey-dark;
   }
 }
 </style>

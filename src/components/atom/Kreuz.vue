@@ -1,7 +1,4 @@
 <script setup lang="ts">
-// Core
-import { ref } from "vue";
-
 // Modules
 import { useEventListener } from "@vueuse/core";
 
@@ -9,11 +6,17 @@ import { useEventListener } from "@vueuse/core";
 const kreuz = ref<HTMLElement>();
 let rotation = 0;
 
-// Listeners
-useEventListener(document, "wheel", (evt) => {
-  evt.deltaY < 0 ? rotation-- : rotation++;
-  kreuz.value!.style.transform = "rotate(" + rotation * 20 + "deg)";
-});
+// Methods
+if (process.client) {
+  const rotateKreuz = useEventListener(document, "wheel", (evt) => {
+    evt.deltaY < 0 ? rotation-- : rotation++;
+    kreuz.value!.style.transform = `rotate(${rotation * 20}deg)`;
+  });
+
+  onBeforeUnmount(() => {
+    rotateKreuz();
+  });
+}
 </script>
 
 <template>
@@ -41,11 +44,11 @@ useEventListener(document, "wheel", (evt) => {
 
   &::before {
     width: 1px;
-    height: 100%;
+    height: calc(100% + 1px);
   }
   &::after {
     height: 1px;
-    width: 100%;
+    width: calc(100% + 1px);
   }
 }
 </style>

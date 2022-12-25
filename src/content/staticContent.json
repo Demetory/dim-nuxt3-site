@@ -1,6 +1,19 @@
 {
   "navi": [{ "path": "/blog", "translate": "common.siteNavi.blog" }],
 
+  "cube": {
+    "size": 80,
+    "duration": 60,
+    "edges": [
+      { "name": "front", "img": "logo-black.svg" },
+      { "name": "back", "img": "logo-black.svg" },
+      { "name": "right", "img": "logo-white.svg" },
+      { "name": "left", "img": "logo-white.svg" },
+      { "name": "top", "img": "logo-black.svg" },
+      { "name": "bottom", "img": "logo-white.svg" }
+    ]
+  },
+
   "navi_contact": [
     {
       "alt": "Demetory - Telegram",
@@ -44,7 +57,13 @@
     "yandex": ""
   },
 
-  "slogan": ["За конституцию? Ну, не чокаясь.", "Все буде добре.", "Помер тот, помрёт и этот.", "Зима будет долгой."],
+  "slogan": [
+    "За конституцию? Ну, не чокаясь.",
+    "Все буде добре.",
+    "Помер тот, помрёт и этот.",
+    "Зима будет долгой.",
+    "Тук-тук, Нео."
+  ],
 
   "heading": {
     "home": {

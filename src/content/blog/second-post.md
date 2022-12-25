@@ -7,10 +7,6 @@ tags: [Nuxt, Test, Second]
 date: "2022-12-19"
 ---
 
-This is the Excerpt of the second post. Will see how it works, folks.
-
-<!-- more -->
-
 ## Second blog post
 
 The second blog post using [Nuxt 3 + NuxtContent 2](https://content.nuxtjs.org/)

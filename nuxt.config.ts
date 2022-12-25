@@ -11,7 +11,7 @@ export default defineNuxtConfig({
 
   css: ["@/assets/scss/index.scss"],
 
-  modules: ["@nuxt/content", "@vueuse/nuxt", "@pinia/nuxt"],
+  modules: ["@nuxt/content", "@vueuse/nuxt", "@pinia/nuxt", "@nuxt/image-edge"],
 
   vite: {
     logLevel: "info",
@@ -32,6 +32,12 @@ export default defineNuxtConfig({
          `,
         },
       },
+    },
+  },
+
+  nitro: {
+    prerender: {
+      routes: ["/sitemap.xml"],
     },
   },
 });

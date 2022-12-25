@@ -5,6 +5,60 @@
    Feel free to customize your app ^-^
    ========================================================================== */
 
+a {
+  position: relative;
+  color: colors.$green;
+
+  &:hover,
+  &:focus {
+    color: colors.$green-dark;
+  }
+
+  &.underlined {
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      display: flex;
+      width: 100%;
+      height: 2px;
+      opacity: 0;
+      transform: scaleX(0.12);
+      transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0s cubic-bezier(0.25, 0.8, 0.25, 1) 0.3s;
+      will-change: opacity, transform;
+    }
+
+    &.router-link-exact-active,
+    &:hover {
+      &::after {
+        opacity: 1;
+        transform: scale(1);
+        transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition-property: opacity, transform;
+      }
+    }
+  }
+}
+
+.theme-dark {
+  a.underlined {
+    &::after {
+      background-color: colors.$white;
+    }
+  }
+}
+
+.theme-light {
+  a.underlined {
+    &::after {
+      background-color: colors.$black;
+    }
+  }
+}
+
+/*   
 // Core
 body {
   font-family: "Inter", sans-serif;
@@ -197,3 +251,4 @@ h2 {
   font-weight: 700;
   font-size: 2.4rem;
 }
+*/

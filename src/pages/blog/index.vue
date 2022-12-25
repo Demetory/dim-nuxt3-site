@@ -2,6 +2,7 @@
 // Methods
 definePageMeta({
   title: "common.siteNavi.blog",
+  layout: "blog",
 });
 
 useHead({
@@ -10,5 +11,5 @@ useHead({
 </script>
 
 <template>
-  <TemplateBlogList />
+  <OrganismGetList />
 </template>

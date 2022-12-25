@@ -31,8 +31,7 @@ defineProps({
   display: flex;
   flex: 0 1 auto;
   flex-direction: row;
-  margin-top: auto;
-  margin-bottom: 4rem;
+  margin: auto 0;
 
   &__col,
   &__col-digit {
@@ -77,7 +76,7 @@ defineProps({
   }
 }
 
-.mode-dark .heading {
+.theme-dark .heading {
   &__line {
     background: -webkit-gradient(linear, left top, left bottom, from(colors.$black), to(colors.$font-grey));
     background: linear-gradient(colors.$black, colors.$font-grey);
@@ -86,7 +85,7 @@ defineProps({
   }
 }
 
-.mode-light .heading {
+.theme-light .heading {
   &__line {
     background: -webkit-gradient(linear, left top, left bottom, from(colors.$font-heading-from), to(colors.$black));
     background: linear-gradient(colors.$font-heading-from, colors.$black);

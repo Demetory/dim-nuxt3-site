@@ -1,36 +1,42 @@
 <script setup lang="ts">
-// Props
-withDefaults(defineProps<{ url?: string }>(), { url: "/" });
+// Modules
+import type { ICube } from "@/types/ICube";
 
-// Data
-const size = 80;
-const edges = [
-  { id: 1, name: "front", img: "logo-black.svg" },
-  { id: 2, name: "back", img: "logo-black.svg" },
-  { id: 3, name: "right", img: "logo-white.svg" },
-  { id: 4, name: "left", img: "logo-white.svg" },
-  { id: 5, name: "top", img: "logo-black.svg" },
-  { id: 6, name: "bottom", img: "logo-white.svg" },
-];
+// Props
+const props = defineProps({
+  params: {
+    type: Object as () => ICube,
+    required: true,
+  },
+});
+
+// Computed Properties
+const getSize = computed(() => {
+  return new String(props.params.size + "px");
+});
+
+const getDuration = computed(() => {
+  return new String(props.params.duration + "s");
+});
 </script>
 
 <template>
   <div class="cube">
-    <router-link :to="url">
+    <NuxtLink to="/">
       <figure class="cube__figure">
-        <span v-for="(edge, index) in edges" :key="`edge-${index}`" :class="['cube__edge', `cube__edge-${edge.name}`]">
-          <img alt="Demetory" :src="useImage(edge.img)" :width="size" :height="size" />
+        <span
+          v-for="(edge, index) in params.edges"
+          :key="`edge-${index}`"
+          :class="['cube__edge', `cube__edge-${edge.name}`]"
+        >
+          <NuxtImg alt="Demetory Logo" :src="`/images/${edge.img}`" width="100%" height="100%" />
         </span>
       </figure>
-    </router-link>
+    </NuxtLink>
   </div>
 </template>
 
 <style scoped lang="scss">
-$cube-size: 80px;
-$cube-bg-color: #000;
-$cube-duration: 60s;
-
 $rotate-default: (
   "front": rotateY(0deg),
   "right": rotateY(90deg),
@@ -55,34 +61,34 @@ $rotate-animaton: (
   display: flex;
   align-items: center;
   justify-content: center;
-  width: $cube-size;
-  height: $cube-size;
+  width: v-bind(getSize);
+  height: v-bind(getSize);
 
   &__figure {
     position: relative;
-    width: $cube-size;
-    height: $cube-size;
+    width: v-bind(getSize);
+    height: v-bind(getSize);
     transition: transform 1s;
-    transform: translateZ(calc($cube-size/2));
+    transform: translateZ(calc(v-bind(getSize) / 2));
     transform-style: preserve-3d;
     transform-origin: center;
     animation-name: spincube;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
-    animation-duration: $cube-duration;
+    animation-duration: v-bind(getDuration);
   }
 
   &__edge {
     position: absolute;
-    width: $cube-size;
-    height: $cube-size;
-    line-height: $cube-size;
+    width: v-bind(getSize);
+    height: v-bind(getSize);
+    line-height: v-bind(getSize);
     text-align: center;
-    background-color: $cube-bg-color;
+    background-color: colors.$black;
 
     @each $name, $rotate in $rotate-default {
       &-#{$name} {
-        transform: $rotate translateZ(calc($cube-size/2));
+        transform: $rotate translateZ(calc(v-bind(getSize) / 2));
       }
     }
 
@@ -93,16 +99,10 @@ $rotate-animaton: (
   }
 }
 
-@media screen and (max-width: 640px) {
-  .cube {
-    display: none;
-  }
-}
-
 @keyframes spincube {
   @each $percent, $rotate in $rotate-animaton {
     #{$percent} {
-      transform: translateZ(calc($cube-size/2)) $rotate;
+      transform: translateZ(calc(v-bind(getSize) / 2)) $rotate;
     }
   }
 }

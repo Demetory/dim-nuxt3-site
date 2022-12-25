@@ -25,10 +25,9 @@ const article = query[0];
 
 <style scoped lang="scss">
 .whatsnew {
-  z-index: 3;
   display: flex;
   flex-direction: column;
-  margin: 8rem 11rem 0;
+  margin: 8rem 10rem 0;
 
   .title {
     margin-bottom: 1rem;

@@ -1,45 +1,51 @@
 <script setup lang="ts">
+// Types
+import type { IHamburger } from "@/types/IHamburger";
+
 // Props
-defineProps<{
-  isOpened?: boolean;
-}>();
+const props = defineProps({
+  params: {
+    type: Object as () => IHamburger,
+    required: true,
+  },
+});
+
+// Computed Properties
+const getSize = computed(() => {
+  return `${props.params.size}px`;
+});
+
+const getDisplay = computed(() => {
+  return props.params.display;
+});
 </script>
 
 <template>
-  <div :class="[`hamburger`, { 'hamburger-opened': isOpened }]">
+  <div :class="['hamburger', `hamburger-${params.display}`, `hamburger-${params.isOpened}`]">
     <span v-for="index in 4" :key="`span-${index}`" />
   </div>
 </template>
 
 <style scoped lang="scss">
-$hamburger-size: 60px;
-$hamburger-bg-menu: #ececec;
-$hamburger-bg-open: #000;
-$hamburger-zindex: 21000;
-$hamburger-transition: all 0.25s ease-in-out;
-
 .hamburger {
-  margin-left: auto;
-  display: none;
-  width: $hamburger-size;
-  height: $hamburger-size;
+  z-index: grid.$zindex-top;
+  display: v-bind(getDisplay);
+  width: v-bind(getSize);
+  height: v-bind(getSize);
   justify-content: center;
   align-items: center;
   transform: rotate(0deg);
-  transition: $hamburger-transition;
-  background-color: $hamburger-bg-menu;
+  transition: all 0.25s ease-in-out;
   cursor: pointer;
-  z-index: $hamburger-zindex;
 
   span {
     display: flex;
     position: absolute;
     height: 6px;
     width: 60%;
-    background-color: colors.$black;
     opacity: 1;
     transform: rotate(0deg);
-    transition: $hamburger-transition;
+    transition: all 0.25s ease-in-out;
     cursor: pointer;
   }
 
@@ -57,27 +63,39 @@ $hamburger-transition: all 0.25s ease-in-out;
     width: 0%;
   }
 
-  &-opened span:nth-child(3),
-  &-opened span:nth-child(4) {
+  &-true span:nth-child(3),
+  &-true span:nth-child(4) {
     width: 50%;
   }
-  &-opened span:nth-child(1),
-  &-opened span:nth-child(2) {
+  &-true span:nth-child(1),
+  &-true span:nth-child(2) {
     width: 0%;
   }
-  &-opened span:nth-child(3) {
+  &-true span:nth-child(3) {
     top: calc(50% - 3px);
     transform: rotate(45deg);
   }
-  &-opened span:nth-child(4) {
+  &-true span:nth-child(4) {
     top: calc(50% - 3px);
     transform: rotate(-45deg);
   }
 }
 
-@media screen and (max-width: 1024px) {
+.theme-dark {
   .hamburger {
-    display: flex;
+    background-color: colors.$grey-light;
+    span {
+      background-color: colors.$black;
+    }
+  }
+}
+
+.theme-light {
+  .hamburger {
+    background-color: colors.$grey-light;
+    span {
+      background-color: colors.$black;
+    }
   }
 }
 </style>

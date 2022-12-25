@@ -16,6 +16,7 @@ tags = [...new Set(tags)];
 <template>
   <section class="tags">
     <p>
+      <AtomTag tag="blog" type="all" />
       <AtomTag v-for="(item, index) in tags" :key="`tag-${index}`" :tag="item" />
     </p>
   </section>

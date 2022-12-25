@@ -8,8 +8,13 @@
 // Color Presets
 $white: #fff;
 $black: #000;
-$grey: #999;
+$black-opacity: rgba(0, 0, 0, 0.95);
 $green: #00bd6f;
+$green-dark: #005f38;
+$grey-light: #efefef;
+$grey-dark: #0a0a0a;
+
+$grey: #999;
 $blue: #73bbc5;
 
 // Typo Colors
@@ -43,3 +48,4 @@ $bg-border-app-dark: #000;
 
 // Helpers
 $selection-bg: #b3d4fc;
+$warning: #ff5708;

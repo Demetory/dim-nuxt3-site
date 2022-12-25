@@ -1,12 +1,49 @@
+<script setup lang="ts">
+// Modules
+import { useContentStore } from "@/store/contentStore";
+
+// Data
+const contentStore = useContentStore();
+const dateTZ = ref(useDateTZ(new Date(), "Asia/Jakarta"));
+const dateHour = ref(String(dateTZ.value.getHours()).padStart(2, "0"));
+const dateMinute = ref(String(dateTZ.value.getMinutes()).padStart(2, "0"));
+const dateClock = ref(String(`${dateHour.value}:${dateMinute.value}`));
+const intervalTimerID = setInterval(updateTime, 1000);
+
+// Computed Properties
+const getContactState = computed(() => {
+  return parseInt(dateHour.value) >= 10 && parseInt(dateHour.value) <= 23
+    ? { text: contentStore.footer_contact_msg.true, state: true }
+    : { text: contentStore.footer_contact_msg.false, state: false };
+});
+
+// Methods
+onBeforeUnmount(() => {
+  clearInterval(intervalTimerID);
+});
+
+function updateTime() {
+  dateTZ.value = useDateTZ(new Date(), "Asia/Jakarta");
+  dateHour.value = String(dateTZ.value.getHours()).padStart(2, "0");
+  dateMinute.value = String(dateTZ.value.getMinutes()).padStart(2, "0");
+  dateClock.value = String(`${dateHour.value}:${dateMinute.value}`);
+}
+</script>
+
 <template>
   <footer class="footer">
     <div class="footer__col">
-      <ClientOnly>
-        <OrganismGetTime />
-      </ClientOnly>
+      <p>
+        It's {{ dateClock }} by me.
+        <AtomLink v-if="getContactState.state" :params="{ text: getContactState.text, url: 'https://t.me/Demetory' }" />
+        <template v-else>{{ getContactState.text }}</template>
+      </p>
     </div>
     <div class="footer__col">
-      <OrganismGetYear />
+      <p>
+        <AtomLink :params="contentStore.links.dim_shop" />
+        {{ getYear() }} &copy; Demetory
+      </p>
     </div>
   </footer>
 </template>
@@ -15,71 +52,38 @@
 .footer {
   display: flex;
   flex-direction: row;
-  flex: 0 1 auto;
-  padding: grid.$gap;
   user-select: none;
 
-  &__col {
+  p {
     display: flex;
-    flex: 0 1 auto;
+    align-items: center;
+  }
 
-    &:last-of-type {
-      margin-left: auto;
+  &__col:first-of-type {
+    a {
+      margin-left: 0.4rem;
+    }
+  }
+
+  &__col:last-of-type {
+    margin-left: auto;
+
+    a {
+      margin-right: grid.$gap;
     }
   }
 
   @media screen and (max-width: 800px) {
-    .footer__col {
-      p {
-        flex-direction: column;
-
-        :deep(span) {
-          margin-left: 0;
-          &:first-of-type {
-            margin-bottom: 0.6rem;
-          }
-        }
-      }
-
-      &:first-of-type p {
-        align-items: flex-start;
-      }
-      &:last-of-type p {
-        align-items: flex-end;
-      }
-    }
-  }
-
-  @media screen and (max-width: 480px) {
     flex-direction: column;
 
-    .footer__col {
-      p {
-        flex-direction: row;
+    &__col:last-of-type {
+      margin-top: 1.6rem;
+      margin-left: 0;
 
-        :deep(span) {
-          &:first-of-type {
-            margin-bottom: 0;
-          }
-        }
-      }
-
-      &:last-of-type {
-        margin-top: 1rem;
-        margin-left: 0;
-        align-items: flex-start;
-
-        p {
-          display: flex;
-          flex: 1;
-          :deep(span:first-of-type) {
-            order: 2;
-            margin-left: auto;
-          }
-          :deep(span:last-of-type) {
-            order: 1;
-          }
-        }
+      a {
+        margin-left: auto;
+        margin-right: 0;
+        order: 2;
       }
     }
   }

@@ -20,10 +20,10 @@ const getSize = computed(() => {
   <div class="flip-container">
     <a :href="params.url" target="_blank" rel="noopener noreferrer">
       <span class="front">
-        <img :alt="params.alt" :src="useImage(`${params.img}-front.svg`)" :width="params.size" :height="params.size" />
+        <NuxtImg :alt="params.alt" :src="`/images/${params.img}-front.svg`" width="100%" height="100%" />
       </span>
       <span class="back">
-        <img :alt="params.alt" :src="useImage(`${params.img}-back.svg`)" :width="params.size" :height="params.size" />
+        <NuxtImg :alt="params.alt" :src="`/images/${params.img}-back.svg`" width="100%" height="100%" />
       </span>
     </a>
   </div>
@@ -31,10 +31,11 @@ const getSize = computed(() => {
 
 <style scoped lang="scss">
 .flip-container {
-  display: flex;
-  perspective: 60px;
+  display: inline-flex;
+  perspective: v-bind(getSize);
   width: v-bind(getSize);
   height: v-bind(getSize);
+  cursor: pointer;
 
   &:hover {
     > a {
@@ -44,10 +45,10 @@ const getSize = computed(() => {
 
   > a {
     position: relative;
-    display: flex;
+    display: inline-flex;
     width: 100%;
     height: 100%;
-    transition: grid.$transition;
+    transition: all grid.$transition;
     transform-style: preserve-3d;
 
     .back,
@@ -72,6 +73,7 @@ const getSize = computed(() => {
     }
   }
 
+  /*
   @media screen and (max-width: 1280px) {
     width: calc(v-bind(getSize) / 1.25);
     height: calc(v-bind(getSize) / 1.25);
@@ -81,5 +83,6 @@ const getSize = computed(() => {
       height: calc(v-bind(getSize) / 1.25);
     }
   }
+  */
 }
 </style>

@@ -7,10 +7,6 @@ tags: [Nuxt, Test, First]
 date: "2022-12-18"
 ---
 
-This is the Excerpt of the first post. Will see how it works, folks.
-
-<!-- more -->
-
 ## First blog post
 
 The first blog post using [Nuxt 3 + NuxtContent 2](https://content.nuxtjs.org/)

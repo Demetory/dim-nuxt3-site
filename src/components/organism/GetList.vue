@@ -17,13 +17,24 @@ const query: QueryBuilderParams = {
 </script>
 
 <template>
-  <ContentList :query="query">
-    <template v-slot="{ list }">
-      <TemplatePostCard v-for="article in list" :key="article._path" :article="article" />
-    </template>
+  <div class="bloglist__wrapper">
+    <ContentList :query="query">
+      <template v-slot="{ list }">
+        <TemplatePostCard v-for="article in list" :key="article._path" :article="article" />
+      </template>
 
-    <template #not-found>
-      <p class="empty">No articles found.</p>
-    </template>
-  </ContentList>
+      <template #not-found>
+        <h2 class="empty">Easy, Tiger.<br />Nothing was found.</h2>
+      </template>
+    </ContentList>
+  </div>
 </template>
+
+<style scoped lang="scss">
+.empty {
+  margin-top: -1.6rem;
+  font-size: 6rem;
+  font-weight: 900;
+  line-height: 120%;
+}
+</style>
