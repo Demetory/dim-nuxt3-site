@@ -26,16 +26,18 @@ a {
       height: 2px;
       opacity: 0;
       transform: scaleX(0.12);
-      transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0s cubic-bezier(0.25, 0.8, 0.25, 1) 0.3s;
+      transition: opacity grid.$transition-cubic, transform 0s cubic-bezier(0.25, 0.8, 0.25, 1) 0.3s;
       will-change: opacity, transform;
     }
 
     &.router-link-exact-active,
     &:hover {
+      color: colors.$green-dark;
+
       &::after {
         opacity: 1;
         transform: scale(1);
-        transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition: grid.$transition-cubic;
         transition-property: opacity, transform;
       }
     }
@@ -57,198 +59,3 @@ a {
     }
   }
 }
-
-/*   
-// Core
-body {
-  font-family: "Inter", sans-serif;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-// App Border
-html,
-body {
-  &::before,
-  &::after {
-    content: "";
-    backface-visibility: hidden;
-    position: fixed;
-    z-index: grid.$zindex-top;
-  }
-}
-
-html {
-  &:after,
-  &:before {
-    top: 0;
-    height: 100%;
-    width: grid.$border-app;
-
-    @media screen and (max-width: 800px) {
-      width: calc(grid.$border-app / 2);
-    }
-  }
-
-  &::before {
-    left: 0;
-  }
-
-  &::after {
-    right: 0;
-  }
-}
-
-body {
-  padding: grid.$border-app;
-
-  &::after,
-  &::before {
-    left: 0;
-    width: 100%;
-    height: grid.$border-app;
-
-    @media screen and (max-width: 800px) {
-      height: calc(grid.$border-app / 2);
-    }
-  }
-
-  &::before {
-    top: 0;
-  }
-
-  &::after {
-    bottom: 0;
-  }
-
-  @media screen and (max-width: 800px) {
-    padding: calc(grid.$border-app / 2);
-  }
-}
-
-html.mode-dark,
-.mode-dark body {
-  color: colors.$font-main-dark;
-  background-color: colors.$bg-body-dark;
-
-  &::before,
-  &::after {
-    background-color: colors.$bg-border-app-dark;
-  }
-}
-
-html.mode-light,
-.mode-light body {
-  color: colors.$font-main-light;
-  background-color: colors.$bg-body-light;
-
-  &::before,
-  &::after {
-    background-color: colors.$bg-border-app-light;
-  }
-}
-
-// Containers
-.page {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-
-  &-wrapper {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding: 0 grid.$gap grid.$gap;
-  }
-}
-
-// Links
-.mainnavi {
-  a {
-    position: relative;
-
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 100%;
-      height: 2px;
-      transition: width grid.$transition;
-    }
-
-    &.router-link-exact-active {
-      &::after {
-        width: 0;
-      }
-    }
-
-    &:hover:not(.router-link-exact-active) {
-      &::after {
-        width: 0;
-      }
-    }
-  }
-}
-
-.mode-dark .mainnavi a {
-  &::after {
-    background-color: colors.$white;
-  }
-}
-
-.mode-light .mainnavi a {
-  &::after {
-    background-color: colors.$black;
-  }
-}
-
-a {
-  color: colors.$link-main;
-}
-
-.mode-dark a {
-  &:hover,
-  &:focus {
-    color: colors.$input-bg-dark-hover;
-  }
-
-  &:active,
-  &.router-link-exact-active {
-    color: colors.$font-white;
-  }
-}
-
-.mode-light a {
-  &:hover,
-  &:focus {
-    color: colors.$font-black;
-  }
-
-  &:active,
-  &.router-link-exact-active {
-    color: colors.$font-black;
-  }
-}
-
-// Icons
-.mode-dark .icon {
-  color: colors.$font-main-dark;
-}
-
-.mode-light .icon {
-  color: colors.$font-main-light;
-}
-
-// Typo
-h1 {
-  font-weight: 700;
-  font-size: 3rem;
-}
-
-h2 {
-  font-weight: 700;
-  font-size: 2.4rem;
-}
-*/

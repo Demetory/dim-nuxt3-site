@@ -1,25 +1,13 @@
 <template>
-  <main class="page-container">
-    <div class="page-wrapper blog">
-      <TemplateBlogAside />
-      <section class="blog__list">
-        <slot />
-      </section>
-    </div>
+  <main>
+    <TemplateBlogAside />
+    <slot />
   </main>
 </template>
 
 <style scoped lang="scss">
-.blog {
+main {
   flex-direction: row;
-
-  &__list {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    margin-bottom: 8rem;
-    margin-left: calc(grid.$gap * 2);
-    padding-top: 10vh;
-  }
+  margin-bottom: 2rem;
 }
 </style>

@@ -1,11 +1,11 @@
 <template>
-  <aside class="blog__aside">
-    <div class="blog__aside-wrapper">
-      <section class="search">
-        <p class="input"><input type="text" value="Everybody looking for something" /></p>
+  <aside class="aside">
+    <div class="aside-wrapper">
+      <section class="aside__search">
+        <p><input type="text" value="Everybody looking for something" /></p>
       </section>
       <OrganismGetTags />
-      <section class="warning">
+      <section class="aside__warning">
         <p>Sry.</p>
         <p>Currently available in russian only.</p>
       </section>
@@ -14,22 +14,22 @@
 </template>
 
 <style scoped lang="scss">
-.blog__aside {
+.aside {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding-top: 10vh;
-  width: 400px;
+  flex: 0 0 400px;
 
   &-wrapper {
     position: sticky;
-    top: 23.5rem;
+    top: 20rem;
     display: flex;
     flex-direction: column;
-    height: 64vh;
+    margin-right: 4rem;
+    height: calc(100vh - (20rem + 7.5rem));
   }
 
-  .search {
+  &__search {
     display: flex;
     flex-direction: column;
 
@@ -43,8 +43,8 @@
     }
   }
 
-  .warning {
-    margin-bottom: 0rem;
+  &__warning {
+    margin-top: auto;
 
     p:first-of-type {
       font-size: 2.2rem;
@@ -58,11 +58,11 @@
   }
 }
 
-.mode-dark .blog input {
+.theme-dark .aside input {
   color: colors.$white;
 }
 
-.mode-light .blog input {
+.theme-light .aside input {
   color: colors.$black;
 }
 </style>

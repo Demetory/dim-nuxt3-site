@@ -52,6 +52,7 @@ function updateTime() {
 .footer {
   display: flex;
   flex-direction: row;
+  margin-top: auto;
   user-select: none;
 
   p {

@@ -17,7 +17,7 @@ const query: QueryBuilderParams = {
 </script>
 
 <template>
-  <div class="bloglist__wrapper">
+  <div class="bloglist">
     <ContentList :query="query">
       <template v-slot="{ list }">
         <TemplatePostCard v-for="article in list" :key="article._path" :article="article" />
@@ -31,10 +31,14 @@ const query: QueryBuilderParams = {
 </template>
 
 <style scoped lang="scss">
-.empty {
-  margin-top: -1.6rem;
-  font-size: 6rem;
-  font-weight: 900;
-  line-height: 120%;
+.bloglist {
+  padding-top: 7.5rem;
+
+  .empty {
+    margin-top: -1.5rem;
+    font-size: 6rem;
+    font-weight: 900;
+    line-height: 120%;
+  }
 }
 </style>

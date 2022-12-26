@@ -2,14 +2,14 @@
 // Modules
 import { useI18n } from "vue-i18n";
 import { useStorage } from "@vueuse/core";
-import { useExamplePiniaStore } from "@/store/examplePinia";
+import { useContentStore } from "@/store/contentStore";
 
 // Data
 const { availableLocales, locale } = useI18n();
-const examplePiniaStore = useExamplePiniaStore();
+const contentStore = useContentStore();
 const options = availableLocales;
 const model = useStorage("language", locale);
-examplePiniaStore.language = model;
+contentStore.language = model;
 
 const data = {
   id: "lang",

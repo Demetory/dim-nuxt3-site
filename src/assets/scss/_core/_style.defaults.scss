@@ -26,6 +26,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: all grid.$transition;
+  overflow-x: hidden;
 }
 
 #__nuxt {
@@ -78,12 +79,16 @@ select:not(:disabled) {
 
 // Fade + Blur Transition
 .page-enter-active,
-.page-leave-active {
+.page-leave-active,
+.layout-enter-active,
+.layout-leave-active {
   transition: all grid.$transition;
 }
 
 .page-enter-from,
-.page-leave-to {
+.page-leave-to,
+.layout-enter,
+.layout-leave-active {
   opacity: 0;
   filter: blur(1rem);
 }

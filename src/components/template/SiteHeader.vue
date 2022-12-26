@@ -17,14 +17,16 @@ watch(contentStore.dimensions, () => {
 watch(
   () => route.name,
   () => {
-    menuIsOpened.value = false;
+    if (menuIsOpened.value) {
+      menuIsOpened.value = false;
+    }
   }
 );
 
 // Methods
 if (process.client) {
   const getKeyboardListener = useEventListener(document, "keydown", (e) => {
-    if (e.key === "Escape") {
+    if (e.key === "Escape" && menuIsOpened.value) {
       menuIsOpened.value = false;
     }
   });
@@ -73,6 +75,18 @@ const openMenu = () => {
 </template>
 
 <style scoped lang="scss">
+.theme-dark {
+  .page-blog .header {
+    background-color: colors.$grey-dark;
+  }
+}
+
+.theme-light {
+  .page-blog .header {
+    background-color: colors.$white;
+  }
+}
+
 .header,
 .header-wrapper {
   position: relative;
@@ -177,7 +191,7 @@ const openMenu = () => {
   @media screen and (max-width: 800px) {
     .header-true {
       .cube {
-        top: calc(grid.$gap * 1.5);
+        top: calc(grid.$gap);
         left: calc(grid.$gap);
       }
 
@@ -194,6 +208,10 @@ const openMenu = () => {
     }
 
     .header-true {
+      .cube {
+        top: calc(grid.$gap * 1.5);
+      }
+
       .navimain {
         display: flex;
       }
@@ -219,6 +237,16 @@ const openMenu = () => {
       opacity: 1;
       display: flex;
     }
+  }
+}
+
+.header {
+  z-index: grid.$zindex-top;
+  position: sticky;
+  top: calc(grid.$gap * 2);
+
+  @media screen and (max-width: 800px) {
+    top: grid.$gap;
   }
 }
 </style>

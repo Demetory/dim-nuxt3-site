@@ -17,8 +17,9 @@ const useContentStore = defineStore("contentStore", () => {
   const heading = staticData.heading;
   const isDark = ref(true);
   const dimensions = ref({ width: 0, height: 0 });
+  const language = ref({});
 
-  return { navi, navi_contacts, links, footer_contact_msg, cube, slogan, heading, isDark, dimensions };
+  return { navi, navi_contacts, links, footer_contact_msg, cube, slogan, heading, isDark, dimensions, language };
 });
 
 // Export

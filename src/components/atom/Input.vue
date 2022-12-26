@@ -37,7 +37,7 @@ const updateValue = (e: Event) => {
   }
 }
 
-.mode-dark .input {
+.theme-dark .input {
   color: colors.$font-black;
   background-color: colors.$input-bg-dark;
 
@@ -48,7 +48,7 @@ const updateValue = (e: Event) => {
   }
 }
 
-.mode-light .input {
+.theme-light .input {
   color: colors.$font-black;
   background-color: transparent;
 

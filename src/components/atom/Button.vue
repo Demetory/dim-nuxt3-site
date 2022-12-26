@@ -30,7 +30,7 @@ const getType = computed(() => {
   }
 }
 
-.mode-dark .btn {
+.theme-dark .btn {
   color: colors.$font-black;
   background-color: colors.$link-main;
 
@@ -41,7 +41,7 @@ const getType = computed(() => {
   }
 }
 
-.mode-light .btn {
+.theme-light .btn {
   color: colors.$font-black;
   background-color: transparent;
 

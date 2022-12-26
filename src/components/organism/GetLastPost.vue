@@ -1,23 +1,22 @@
 <script setup lang="ts">
 // Data
-const query = await queryContent("blog")
-  .only(["number", "_path", "title", "subtitle"])
-  .sort({ date: -1 })
-  .limit(1)
-  .find();
-const article = query[0];
+const { data } = reactive(
+  await useAsyncData("post", () =>
+    queryContent("blog").only(["number", "_path", "title", "subtitle"]).sort({ date: -1 }).limit(1).find()
+  )
+);
 </script>
 
 <template>
   <article class="whatsnew">
     <h2 class="title">New in da Blog:</h2>
     <div class="entry">
-      <div class="digit">{{ `#${article.number}` }}</div>
+      <div class="digit">{{ `#${data![0].number}` }}</div>
       <div class="content">
         <h3 class="subtitle">
-          <NuxtLink :to="article._path">{{ article.title }}</NuxtLink>
+          <NuxtLink :to="data![0]._path">{{ data![0].title }}</NuxtLink>
         </h3>
-        <p>{{ article.subtitle }}</p>
+        <p>{{ data![0].subtitle }}</p>
       </div>
     </div>
   </article>

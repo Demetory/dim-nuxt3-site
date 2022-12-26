@@ -11,5 +11,7 @@ useHead({
 </script>
 
 <template>
-  <OrganismGetList />
+  <div class="page-wrapper">
+    <OrganismGetList />
+  </div>
 </template>

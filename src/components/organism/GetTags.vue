@@ -1,16 +1,15 @@
 <script setup lang="ts">
 // Data
 const { data } = reactive(await useAsyncData("tags", () => queryContent("blog").only(["tags"]).find()));
-const _data = [...Array.from(new Set(data))];
 let tags: string[] = [];
 
-for (const iterator of _data) {
+for (const iterator of data!) {
   iterator.tags.forEach((element: string) => {
-    tags.push(element);
+    if (tags.includes(element) === false) {
+      tags.push(element);
+    }
   });
 }
-
-tags = [...new Set(tags)];
 </script>
 
 <template>
@@ -25,7 +24,7 @@ tags = [...new Set(tags)];
 <style scoped lang="scss">
 .tags {
   display: flex;
-  margin-top: auto;
-  margin-bottom: auto;
+  flex: 1;
+  align-items: center;
 }
 </style>

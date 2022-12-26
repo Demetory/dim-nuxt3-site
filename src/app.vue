@@ -72,10 +72,63 @@ if (process.client) {
 </template>
 
 <style lang="scss">
+html {
+  &::after,
+  &::before {
+    z-index: calc(grid.$zindex-top + 100);
+    position: absolute;
+    top: grid.$gap;
+    height: calc(100vh - grid.$gap * 2);
+    content: "";
+  }
+
+  &[attr="loading"] {
+    &::after,
+    &::before {
+      width: 50%;
+      animation-name: loading;
+      animation-duration: 2s;
+      animation-iteration-count: 1;
+      animation-delay: 1s;
+      animation-fill-mode: forwards;
+    }
+    &::before {
+      left: grid.$gap;
+    }
+    &::after {
+      right: grid.$gap;
+    }
+  }
+
+  @keyframes loading {
+    0% {
+      width: calc(100vw - grid.$gap * 3);
+    }
+    100% {
+      width: 1px;
+    }
+  }
+
+  &.theme-dark {
+    &::after,
+    &::before {
+      background-color: colors.$black;
+    }
+  }
+
+  &.theme-light {
+    &::after,
+    &::before {
+      background-color: colors.$grey-light;
+    }
+  }
+}
+
 body {
   padding: grid.$gap;
   font-family: "Inter", sans-serif;
   overflow-y: scroll;
+  overflow-x: none;
 
   #__nuxt,
   .page,
@@ -84,11 +137,17 @@ body {
     display: flex;
     flex-direction: column;
     flex: 1;
-    transition: color grid.$transition, background-color grid.$transition;
+    transition: all grid.$transition;
   }
 
   .page {
     padding: grid.$gap;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
 
   @media screen and (max-width: 800px) {
