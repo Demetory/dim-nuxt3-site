@@ -35,7 +35,7 @@ const getDisplay = computed(() => {
   justify-content: center;
   align-items: center;
   transform: rotate(0deg);
-  transition: all 0.25s ease-in-out;
+  transition: background-color grid.$transition;
   cursor: pointer;
 
   span {

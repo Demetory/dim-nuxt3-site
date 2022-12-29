@@ -25,7 +25,7 @@ if (process.client) {
 
 <style scoped lang="scss">
 .kreuz {
-  z-index: calc(grid.$zindex-top + 100);
+  z-index: calc(grid.$zindex-top + 200);
   position: fixed;
   top: calc(grid.$gap / 2);
   right: calc(grid.$gap / 2);
@@ -39,7 +39,6 @@ if (process.client) {
   &::after {
     position: absolute;
     content: "";
-    background-color: colors.$white;
   }
 
   &::before {
@@ -49,6 +48,20 @@ if (process.client) {
   &::after {
     height: 1px;
     width: calc(100% + 1px);
+  }
+}
+
+.theme-dark .kreuz {
+  &::before,
+  &::after {
+    background-color: colors.$grey-light;
+  }
+}
+
+.theme-light .kreuz {
+  &::before,
+  &::after {
+    background-color: colors.$grey-dark;
   }
 }
 </style>

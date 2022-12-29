@@ -43,7 +43,7 @@ if (process.client) {
 </script>
 
 <template>
-  <Html :lang="locale" :class="getTheme">
+  <Html :lang="locale" :class="getTheme" attr="loading">
     <Body>
       <NoScript>
         <section class="noscript">
@@ -72,54 +72,97 @@ if (process.client) {
 </template>
 
 <style lang="scss">
-html {
-  &::after,
-  &::before {
+html,
+body {
+  &::before,
+  &::after {
     z-index: calc(grid.$zindex-top + 100);
-    position: absolute;
-    top: grid.$gap;
-    height: calc(100vh - grid.$gap * 2);
+    position: fixed;
     content: "";
   }
+}
 
-  &[attr="loading"] {
-    &::after,
-    &::before {
-      width: 50%;
-      animation-name: loading;
-      animation-duration: 2s;
-      animation-iteration-count: 1;
-      animation-delay: 1s;
-      animation-fill-mode: forwards;
-    }
-    &::before {
-      left: grid.$gap;
-    }
-    &::after {
-      right: grid.$gap;
-    }
+html {
+  &::before,
+  &::after {
+    top: 0;
+    width: 50vw;
+    height: 100vh;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
   }
-
-  @keyframes loading {
-    0% {
-      width: calc(100vw - grid.$gap * 3);
-    }
-    100% {
-      width: 1px;
-    }
+  &::before {
+    left: 0;
+  }
+  &::after {
+    right: 0;
   }
 
   &.theme-dark {
-    &::after,
-    &::before {
+    &::before,
+    &::after {
       background-color: colors.$black;
+    }
+
+    body {
+      color: colors.$grey-light;
+      background-color: colors.$grey-dark;
+
+      &::before,
+      &::after {
+        background-color: colors.$black;
+      }
     }
   }
 
   &.theme-light {
-    &::after,
-    &::before {
+    &::before,
+    &::after {
       background-color: colors.$grey-light;
+    }
+
+    body {
+      color: colors.$grey-dark;
+      background-color: colors.$white;
+
+      &::before,
+      &::after {
+        background-color: colors.$grey-light;
+      }
+    }
+  }
+
+  &[attr="loading"] {
+    &::before,
+    &::after {
+      animation-name: loading-wide;
+    }
+
+    @media screen and (max-width: 800px) {
+      &::before,
+      &::after {
+        animation-name: loading-thin;
+      }
+    }
+  }
+
+  @keyframes loading-wide {
+    0% {
+      width: 50vw;
+    }
+    100% {
+      width: grid.$gap;
+    }
+  }
+
+  @keyframes loading-thin {
+    0% {
+      width: 50vw;
+    }
+    100% {
+      width: calc(grid.$gap / 2);
     }
   }
 }
@@ -128,52 +171,44 @@ body {
   padding: grid.$gap;
   font-family: "Inter", sans-serif;
   overflow-y: scroll;
-  overflow-x: none;
+  overflow-x: hidden;
 
-  #__nuxt,
-  .page,
-  .page-wrapper {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    transition: all grid.$transition;
+  &::before,
+  &::after {
+    left: 0;
+    width: 100vw;
+    height: grid.$gap;
   }
-
-  .page {
-    padding: grid.$gap;
+  &::before {
+    top: 0;
   }
-
-  main {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  &::after {
+    bottom: 0;
   }
 
   @media screen and (max-width: 800px) {
     padding: calc(grid.$gap / 2);
 
-    .page {
-      padding: calc(grid.$gap / 2);
+    &::before,
+    &::after {
+      height: calc(grid.$gap / 2);
     }
   }
 }
 
-.theme-dark {
-  background-color: colors.$black;
-
-  .page {
-    background-color: colors.$grey-dark;
-    color: colors.$grey-light;
-  }
+main,
+.page,
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-.theme-light {
-  background-color: colors.$grey-light;
+main {
+  padding: 0 grid.$gap;
 
-  .page {
-    background-color: colors.$white;
-    color: colors.$grey-dark;
+  @media screen and (max-width: 800px) {
+    padding: 0 calc(grid.$gap / 2);
   }
 }
 </style>

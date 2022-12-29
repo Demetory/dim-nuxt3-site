@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { defineStore } from "pinia";
 
 // Static content
-import * as staticData from "@/content/staticContent.json";
+import * as staticData from "~~/src/store/staticContent.json";
 
 // Store
 const useContentStore = defineStore("contentStore", () => {

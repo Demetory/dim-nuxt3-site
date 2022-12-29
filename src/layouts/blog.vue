@@ -8,6 +8,5 @@
 <style scoped lang="scss">
 main {
   flex-direction: row;
-  margin-bottom: 2rem;
 }
 </style>

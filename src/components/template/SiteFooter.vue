@@ -53,6 +53,7 @@ function updateTime() {
   display: flex;
   flex-direction: row;
   margin-top: auto;
+  padding: grid.$gap;
   user-select: none;
 
   p {
@@ -76,6 +77,7 @@ function updateTime() {
 
   @media screen and (max-width: 800px) {
     flex-direction: column;
+    padding: calc(grid.$gap / 2);
 
     &__col:last-of-type {
       margin-top: 1.6rem;

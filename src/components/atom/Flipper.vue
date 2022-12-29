@@ -72,17 +72,5 @@ const getSize = computed(() => {
       transform: rotateY(180deg);
     }
   }
-
-  /*
-  @media screen and (max-width: 1280px) {
-    width: calc(v-bind(getSize) / 1.25);
-    height: calc(v-bind(getSize) / 1.25);
-
-    img {
-      width: calc(v-bind(getSize) / 1.25);
-      height: calc(v-bind(getSize) / 1.25);
-    }
-  }
-  */
 }
 </style>

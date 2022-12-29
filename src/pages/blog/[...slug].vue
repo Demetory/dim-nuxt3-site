@@ -12,13 +12,18 @@ definePageMeta({
 });
 
 useHead({
-  title: article.title,
-  meta: [{ name: "description", content: "NuxtContent Starter Template" }],
+  title: `${article.title} — Blog Demetory`,
+  meta: [
+    {
+      name: "description",
+      content: `${article.title} — Blog Demetory. All about Vue.js, Nuxt.js and Frontend-Development in common.`,
+    },
+  ],
 });
 </script>
 
 <template>
-  <section class="entry">
+  <div class="page-wrapper">
     <header class="entry__head">
       <h1 class="entry__title">{{ article.title }}</h1>
     </header>
@@ -39,5 +44,5 @@ useHead({
         <NuxtLink :to="next._path">{{ next.title }}</NuxtLink> &rarr;
       </span>
     </footer>
-  </section>
+  </div>
 </template>

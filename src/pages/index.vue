@@ -7,12 +7,14 @@ const contentStore = useContentStore();
 const heading = contentStore.heading.home;
 
 // Methods
-definePageMeta({
-  title: "common.siteNavi.home",
-});
-
 useHead({
-  meta: [{ name: "description", content: "Demetory. Creating Sites and Apps - creative simplicity." }],
+  title: "Demetory",
+  meta: [
+    {
+      name: "description",
+      content: "Demetory. Code, Design, Prototype. Creating Sites and Apps - creative simplicity. ",
+    },
+  ],
 });
 </script>
 

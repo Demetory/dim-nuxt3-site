@@ -1,12 +1,14 @@
 <script setup lang="ts">
 // Methods
 definePageMeta({
-  title: "common.siteNavi.blog",
   layout: "blog",
 });
 
 useHead({
-  meta: [{ name: "description", content: "NuxtContent Starter Template" }],
+  title: "Blog — Demetory",
+  meta: [
+    { name: "description", content: "Demetory Blog. All about Vue.js, Nuxt.js and Frontend-Development in common." },
+  ],
 });
 </script>
 

@@ -31,7 +31,7 @@ const getType = computed(() => {
     border: solid 1px colors.$green;
     border-radius: 8px;
     color: colors.$green;
-    transition: all grid.$transition;
+    transition: color grid.$transition, background-color grid.$transition;
     background-color: transparent;
 
     &.router-link-exact-active {

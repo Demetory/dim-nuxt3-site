@@ -22,7 +22,7 @@
 
   &-wrapper {
     position: sticky;
-    top: 20rem;
+    top: 18rem;
     display: flex;
     flex-direction: column;
     margin-right: 4rem;
@@ -32,6 +32,7 @@
   &__search {
     display: flex;
     flex-direction: column;
+    margin-top: 6rem;
 
     input {
       display: inline-flex;

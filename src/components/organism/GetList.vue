@@ -2,15 +2,17 @@
 // Modules
 import type { QueryBuilderParams } from "@nuxt/content/dist/runtime/types";
 
-// Data
-const route = useRoute();
+// Props
+const props = defineProps<{
+  tag?: string | string[];
+}>();
 
 // Data
 const query: QueryBuilderParams = {
   path: "/blog",
   only: ["number", "title", "subtitle", "tags", "date", "_path"],
   // @ts-expect-error: not exist in type
-  where: { tags: { $contains: route.params.slug } },
+  where: { tags: { $contains: props.tag } },
   // @ts-expect-error: not exist in type
   sort: { date: -1 },
 };
@@ -32,7 +34,7 @@ const query: QueryBuilderParams = {
 
 <style scoped lang="scss">
 .bloglist {
-  padding-top: 7.5rem;
+  padding-top: 9.5rem;
 
   .empty {
     margin-top: -1.5rem;

@@ -93,8 +93,8 @@ const openMenu = () => {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
-  height: 80px;
+  // width: 100%;
+  // height: 80px;
 
   .navimain {
     z-index: 2;
@@ -110,7 +110,7 @@ const openMenu = () => {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 60px;
+    margin-left: auto;
     font-size: 2.2rem;
 
     .flip-container {
@@ -243,10 +243,15 @@ const openMenu = () => {
 .header {
   z-index: grid.$zindex-top;
   position: sticky;
-  top: calc(grid.$gap * 2);
+  top: grid.$gap;
+  padding: grid.$gap;
+
+  .header-wrapper {
+    flex: 1;
+  }
 
   @media screen and (max-width: 800px) {
-    top: grid.$gap;
+    // top: grid.$gap;
   }
 }
 </style>
